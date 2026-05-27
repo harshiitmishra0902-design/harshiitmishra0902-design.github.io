@@ -1,290 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Harshit Mishra Portfolio</title>
 
-<title>Harshit Mishra Portfolio</title>
+    <style>
+        /* --- ORIGINAL BASE STYLES --- */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-<style>
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#050816;
+            color:white;
+            overflow-x:hidden;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        /* Background Animation */
+        body::before{
+            content:'';
+            position:fixed;
+            width:100%;
+            height:100%;
+            background:
+            radial-gradient(circle at top left,#00f7ff33,transparent 30%),
+            radial-gradient(circle at bottom right,#ff00ff33,transparent 30%);
+            z-index:-1;
+        }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#050816;
-    color:white;
-    overflow-x:hidden;
-}
+        /* HEADER WITH SIDE-BY-SIDE LAYOUT */
+        header{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap: 50px;
+            padding: 40px 10%;
+            position:relative;
+        }
 
-/* Background Animation */
+        /* Profile Picture Styling */
+        .profile-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 350px;
+        }
 
-body::before{
-    content:'';
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:
-    radial-gradient(circle at top left,#00f7ff33,transparent 30%),
-    radial-gradient(circle at bottom right,#ff00ff33,transparent 30%);
-    z-index:-1;
-}
+        .profile-pic {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%; /* Makes the image circular */
+            border: 3px solid #00f7ff;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.6);
+            object-fit: cover;
+            aspect-ratio: 1 / 1; /* Keeps it a perfect circle */
+            animation: fadeIn 1.5s ease;
+        }
 
-/* HEADER WITH SIDE-BY-SIDE LAYOUT */
+        /* Header Text Content Wrapper */
+        .header-content {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligns text to the left side */
+            text-align: left;
+        }
 
-header{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap: 50px;
-    padding: 40px 10%;
-    position:relative;
-}
+        /* Animated Letters */
+        .name{
+            display:flex;
+            gap:15px;
+            font-size:70px;
+            font-family:'Orbitron',sans-serif;
+            font-weight:bold;
+            color:#00f7ff;
+        }
 
-/* Profile Picture Styling */
-.profile-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 350px;
-}
+        .name span{
+            opacity:0;
+            transform:translateY(-100px);
+            animation:drop 0.7s forwards;
+        }
 
-.profile-pic {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 50%; /* Makes the image circular */
-    border: 3px solid #00f7ff;
-    box-shadow: 0 0 25px rgba(0, 247, 255, 0.6);
-    object-fit: cover;
-    aspect-ratio: 1 / 1; /* Keeps it a perfect circle */
-    animation: fadeIn 1.5s ease;
-}
+        .name span:nth-child(1){animation-delay:0.2s;}
+        .name span:nth-child(2){animation-delay:0.4s;}
+        .name span:nth-child(3){animation-delay:0.6s;}
+        .name span:nth-child(4){animation-delay:0.8s;}
+        .name span:nth-child(5){animation-delay:1s;}
+        .name span:nth-child(6){animation-delay:1.2s;}
+        .name span:nth-child(7){animation-delay:1.4s;}
 
-/* Header Text Content Wrapper */
-.header-content {
-    flex: 1.5;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns text to the left side */
-    text-align: left;
-}
+        @keyframes drop{
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
 
-/* Animated Letters */
+        .surname{
+            font-size:50px;
+            margin-top:10px;
+            letter-spacing:8px;
+            color:#ff00ff;
+            animation:glow 2s infinite alternate;
+            font-family:'Orbitron',sans-serif;
+        }
 
-.name{
-    display:flex;
-    gap:15px;
-    font-size:70px;
-    font-family:'Orbitron',sans-serif;
-    font-weight:bold;
-    color:#00f7ff;
-}
+        @keyframes glow{
+            from{
+                text-shadow:0 0 10px #ff00ff;
+            }
+            to{
+                text-shadow:0 0 30px #ff00ff;
+            }
+        }
 
-.name span{
-    opacity:0;
-    transform:translateY(-100px);
-    animation:drop 0.7s forwards;
-}
+        /* Description */
+        .intro{
+            margin-top:30px;
+            width:100%;
+            max-width:800px;
+            font-size:20px;
+            line-height:1.8;
+            color:#ddd;
+            animation:fadeIn 2s ease;
+        }
 
-.name span:nth-child(1){animation-delay:0.2s;}
-.name span:nth-child(2){animation-delay:0.4s;}
-.name span:nth-child(3){animation-delay:0.6s;}
-.name span:nth-child(4){animation-delay:0.8s;}
-.name span:nth-child(5){animation-delay:1s;}
-.name span:nth-child(6){animation-delay:1.2s;}
-.name span:nth-child(7){animation-delay:1.4s;}
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
 
-@keyframes drop{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+        /* --- ADDED BUTTON STYLING (Matching your futuristic aesthetic) --- */
+        .portfolio-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease;
+        }
 
-.surname{
-    font-size:50px;
-    margin-top:10px;
-    letter-spacing:8px;
-    color:#ff00ff;
-    animation:glow 2s infinite alternate;
-    font-family:'Orbitron',sans-serif;
-}
+        .btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
 
-@keyframes glow{
-    from{
-        text-shadow:0 0 10px #ff00ff;
-    }
-    to{
-        text-shadow:0 0 30px #ff00ff;
-    }
-}
+        /* Contact Us Button - Cyan Glow */
+        .btn-contact {
+            color: #00f3ff;
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 5px rgba(0, 243, 255, 0.2);
+        }
+        .btn-contact:hover {
+            background: #00f3ff;
+            color: #050816;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
 
-/* Description */
+        /* User Review Button - Purple/Magenta Glow */
+        .btn-review {
+            color: #ff00ff;
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
+        }
+        .btn-review:hover {
+            background: #ff00ff;
+            color: #050816;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+        }
 
-.intro{
-    margin-top:30px;
-    width:100%;
-    max-width:800px;
-    font-size:20px;
-    line-height:1.8;
-    color:#ddd;
-    animation:fadeIn 2s ease;
-}
+        /* About Us Button - Silver/White Glow */
+        .btn-about {
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        .btn-about:hover {
+            background: #ffffff;
+            color: #050816;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:1;
-    }
-}
+        /* --- ADDED MODAL POPUP STYLING --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
 
-/* Section */
+        .modal-content {
+            background-color: #10182f;
+            color: #ffffff;
+            margin: 15% auto; 
+            padding: 25px;
+            border: 1px solid #00f7ff44;
+            width: 80%;
+            max-width: 450px;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.3);
+        }
 
-section{
-    padding:80px 10%;
-}
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #ff00ff;
+        }
 
-.section-title{
-    font-size:40px;
-    color:#00f7ff;
-    margin-bottom:40px;
-    text-align:center;
-    text-transform:uppercase;
-    letter-spacing:3px;
-}
+        .modal-content h3 {
+            color: #00f7ff;
+            margin-bottom: 15px;
+        }
 
-/* Achievement Cards */
+        .modal-content p {
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
+        /* Review Dropdown & Submit Styles */
+        .review-select {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            background: #050816;
+            color: #fff;
+            border: 1px solid #00f7ff44;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .submit-btn {
+            background: #00f3ff;
+            color: #050816;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+        .submit-btn:hover {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
 
-.card{
-    background:#10182f;
-    padding:30px;
-    border-radius:20px;
-    transition:0.4s;
-    border:1px solid #00f7ff44;
-    box-shadow:0 0 20px #000;
-}
+        /* Section Setup */
+        section{
+            padding:80px 10%;
+        }
 
-.card:hover{
-    transform:translateY(-10px) scale(1.03);
-    box-shadow:0 0 25px #00f7ff;
-}
+        .section-title{
+            font-size:40px;
+            color:#00f7ff;
+            margin-bottom:40px;
+            text-align:center;
+            text-transform:uppercase;
+            letter-spacing:3px;
+        }
 
-.card h3{
-    margin-bottom:15px;
-    color:#ff00ff;
-}
+        /* Achievement Cards */
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
 
-/* Contact */
+        .card{
+            background:#10182f;
+            padding:30px;
+            border-radius:20px;
+            transition:0.4s;
+            border:1px solid #00f7ff44;
+            box-shadow:0 0 20px #000;
+        }
 
-.contact{
-    text-align:center;
-}
+        .card:hover{
+            transform:translateY(-10px) scale(1.03);
+            box-shadow:0 0 25px #00f7ff;
+        }
 
-.contact-icons{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
-    gap:40px;
-}
+        .card h3{
+            margin-bottom:15px;
+            color:#ff00ff;
+        }
 
-.contact-icons a{
-    text-decoration:none;
-    color:white;
-    font-size:50px;
-    transition:0.4s;
-}
+        /* Contact Section */
+        .contact{
+            text-align:center;
+        }
 
-.contact-icons a:hover{
-    transform:scale(1.2);
-    color:#00f7ff;
-}
+        .contact-icons{
+            margin-top:30px;
+            display:flex;
+            justify-content:center;
+            gap:40px;
+        }
 
-/* Footer */
+        .contact-icons a{
+            text-decoration:none;
+            color:white;
+            font-size:50px;
+            transition:0.4s;
+        }
 
-footer{
-    text-align:center;
-    padding:20px;
-    background:#0a0f1f;
-    margin-top:50px;
-    color:#aaa;
-}
+        .contact-icons a:hover{
+            transform:scale(1.2);
+            color:#00f7ff;
+        }
 
-/* Floating animation */
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:20px;
+            background:#0a0f1f;
+            margin-top:50px;
+            color:#aaa;
+        }
 
-.floating{
-    animation:float 4s ease-in-out infinite;
-}
+        /* Floating animation */
+        .floating{
+            animation:float 4s ease-in-out infinite;
+        }
 
-@keyframes float{
-    0%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-    100%{
-        transform:translateY(0);
-    }
-}
+        @keyframes float{
+            0%{ transform:translateY(0); }
+            50%{ transform:translateY(-15px); }
+            100%{ transform:translateY(0); }
+        }
 
-/* RESPONSIVE LAYOUT FOR MOBILE DEVICES */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-        padding-top: 60px;
-    }
-    .header-content {
-        align-items: center;
-        text-align: center;
-    }
-    .name {
-        font-size: 50px;
-        gap: 10px;
-    }
-    .surname {
-        font-size: 38px;
-    }
-}
+        /* RESPONSIVE LAYOUT FOR MOBILE DEVICES */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding-top: 60px;
+            }
+            .header-content {
+                align-items: center;
+                text-align: center;
+            }
+            .name {
+                font-size: 50px;
+                gap: 10px;
+            }
+            .surname {
+                font-size: 38px;
+            }
+            .portfolio-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
 
-</style>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 
 <body>
 
 <header>
-
     <div class="profile-container floating">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/m5pZp7J3/harshit-jpg.jpg" alt="harshit jpg" border="0"></a>
+        <a href="https://imgbb.com/">
+            <img src="https://i.ibb.co/m5pZp7J3/harshit-jpg.jpg" alt="harshit jpg" border="0" class="profile-pic">
+        </a>
     </div>
+
     <div class="header-content">
         <div class="name">
-            <span>H</span>
-            <span>A</span>
-            <span>R</span>
-            <span>S</span>
-            <span>H</span>
-            <span>I</span>
-            <span>T</span>
+            <span>H</span><span>A</span><span>R</span><span>S</span><span>H</span><span>I</span><span>T</span>
         </div>
 
         <div class="surname">
@@ -298,66 +416,102 @@ footer{
             I am passionate about technology, web development,
             AI/ML, and creating futuristic projects with modern design.
         </div>
-    </div>
 
+        <div class="portfolio-buttons">
+            <a href="mailto:harshiitmishra0902@gmail.com" class="btn btn-contact">Contact Us</a>
+            <button class="btn btn-review" onclick="openReview()">User Review</button>
+            <button class="btn btn-about" onclick="openAbout()">About Us</button>
+        </div>
+    </div>
 </header>
 
 <section>
-
     <h2 class="section-title">My Achievements</h2>
-
     <div class="cards">
-
         <div class="card">
             <h3>Web Development</h3>
-            <p>
-                Created modern portfolio websites and responsive web projects using HTML, CSS, and JavaScript.
-            </p>
+            <p>Created modern portfolio websites and responsive web projects using HTML, CSS, and JavaScript.</p>
         </div>
-
         <div class="card">
             <h3>AI / ML Learning</h3>
-            <p>
-                Learning Artificial Intelligence and Machine Learning from beginner to advanced level.
-            </p>
+            <p>Learning Artificial Intelligence and Machine Learning from beginner to advanced level.</p>
         </div>
-
         <div class="card">
             <h3>Creative Projects</h3>
-            <p>
-                Worked on chatbot ideas, portfolio systems, and interactive UI designs.
-            </p>
+            <p>Worked on chatbot ideas, portfolio systems, and interactive UI designs.</p>
         </div>
-
     </div>
-
 </section>
 
 <section class="contact">
-
     <h2 class="section-title">Contact Me</h2>
-
-    <p>
-        Connect with me through Instagram and Email
-    </p>
-
+    <p>Connect with me through Instagram and Email</p>
     <div class="contact-icons">
-
         <a href="https://www.instagram.com/redcap_hm09?igsh=cWUwNGZ2NWRpNnR0" target="_blank">
-           <i class="fab fa-instagram"></i>
+            <i class="fab fa-instagram"></i>
         </a>
-
         <a href="mailto:harshiitmishra0902@gmail.com">
-           <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope"></i>
         </a>
-
     </div>
-
 </section>
 
 <footer>
     © 2026 Harshit Mishra | Designed By team ZERO9 [ FOUNDER :- HARSHIT MISHRA ]
 </footer>
 
+
+<div id="customModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+
+<script>
+    const modal = document.getElementById("customModal");
+    const modalBody = document.getElementById("modalBody");
+
+    function openReview() {
+        modalBody.innerHTML = `
+            <h3>Rate My Site</h3>
+            <p>How much do you like my portfolio?</p>
+            <select id="ratingScore" class="review-select">
+                ${Array.from({length: 10}, (_, i) => `<option value="${i+1}">${i+1} / 10</option>`).join('')}
+            </select>
+            <button class="submit-btn" onclick="submitRating()">Submit Rating</button>
+        `;
+        modal.style.display = "block";
+    }
+
+    function submitRating() {
+        const score = document.getElementById("ratingScore").value;
+        alert(`Thank you for rating my site a ${score}/10!`);
+        closeModal();
+    }
+
+    function openAbout() {
+        modalBody.innerHTML = `
+            <h3>About Us</h3>
+            <p>Hello, myself <strong>Harshit Mishra</strong>. Thanks for visiting my portfolio!</p>
+            <p>If you want to give any additional message to me, contact me through Instagram or Gmail.</p>
+        `;
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Close modal if user clicks outside of the active box
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
 </body>
 </html>
+
