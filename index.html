@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Harshit Mishra Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background Animation */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left,#00f7ff33,transparent 30%),
+    radial-gradient(circle at bottom right,#ff00ff33,transparent 30%);
+    z-index:-1;
+}
+
+/* HEADER WITH SIDE-BY-SIDE LAYOUT */
+
+header{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 50px;
+    padding: 40px 10%;
+    position:relative;
+}
+
+/* Profile Picture Styling */
+.profile-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+}
+
+.profile-pic {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid #00f7ff;
+    box-shadow: 0 0 25px rgba(0, 247, 255, 0.6);
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* Keeps it a perfect circle */
+    animation: fadeIn 1.5s ease;
+}
+
+/* Header Text Content Wrapper */
+.header-content {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns text to the left side */
+    text-align: left;
+}
+
+/* Animated Letters */
+
+.name{
+    display:flex;
+    gap:15px;
+    font-size:70px;
+    font-family:'Orbitron',sans-serif;
+    font-weight:bold;
+    color:#00f7ff;
+}
+
+.name span{
+    opacity:0;
+    transform:translateY(-100px);
+    animation:drop 0.7s forwards;
+}
+
+.name span:nth-child(1){animation-delay:0.2s;}
+.name span:nth-child(2){animation-delay:0.4s;}
+.name span:nth-child(3){animation-delay:0.6s;}
+.name span:nth-child(4){animation-delay:0.8s;}
+.name span:nth-child(5){animation-delay:1s;}
+.name span:nth-child(6){animation-delay:1.2s;}
+.name span:nth-child(7){animation-delay:1.4s;}
+
+@keyframes drop{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.surname{
+    font-size:50px;
+    margin-top:10px;
+    letter-spacing:8px;
+    color:#ff00ff;
+    animation:glow 2s infinite alternate;
+    font-family:'Orbitron',sans-serif;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff00ff;
+    }
+    to{
+        text-shadow:0 0 30px #ff00ff;
+    }
+}
+
+/* Description */
+
+.intro{
+    margin-top:30px;
+    width:100%;
+    max-width:800px;
+    font-size:20px;
+    line-height:1.8;
+    color:#ddd;
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* Section */
+
+section{
+    padding:80px 10%;
+}
+
+.section-title{
+    font-size:40px;
+    color:#00f7ff;
+    margin-bottom:40px;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:3px;
+}
+
+/* Achievement Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#10182f;
+    padding:30px;
+    border-radius:20px;
+    transition:0.4s;
+    border:1px solid #00f7ff44;
+    box-shadow:0 0 20px #000;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 25px #00f7ff;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#ff00ff;
+}
+
+/* Contact */
+
+.contact{
+    text-align:center;
+}
+
+.contact-icons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+}
+
+.contact-icons a{
+    text-decoration:none;
+    color:white;
+    font-size:50px;
+    transition:0.4s;
+}
+
+.contact-icons a:hover{
+    transform:scale(1.2);
+    color:#00f7ff;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#0a0f1f;
+    margin-top:50px;
+    color:#aaa;
+}
+
+/* Floating animation */
+
+.floating{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE LAYOUT FOR MOBILE DEVICES */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding-top: 60px;
+    }
+    .header-content {
+        align-items: center;
+        text-align: center;
+    }
+    .name {
+        font-size: 50px;
+        gap: 10px;
+    }
+    .surname {
+        font-size: 38px;
+    }
+}
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="profile-container floating">
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/m5pZp7J3/harshit-jpg.jpg" alt="harshit jpg" border="0"></a>
+    </div>
+    <div class="header-content">
+        <div class="name">
+            <span>H</span>
+            <span>A</span>
+            <span>R</span>
+            <span>S</span>
+            <span>H</span>
+            <span>I</span>
+            <span>T</span>
+        </div>
+
+        <div class="surname">
+            MISHRA
+        </div>
+
+        <div class="intro">
+            Hello, my name is <b>Harshit Mishra</b>.  
+            Currently pursuing <b>BCA</b> at 
+            <b>Dr. C.V. Raman University</b>.  
+            I am passionate about technology, web development,
+            AI/ML, and creating futuristic projects with modern design.
+        </div>
+    </div>
+
+</header>
+
+<section>
+
+    <h2 class="section-title">My Achievements</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Web Development</h3>
+            <p>
+                Created modern portfolio websites and responsive web projects using HTML, CSS, and JavaScript.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>AI / ML Learning</h3>
+            <p>
+                Learning Artificial Intelligence and Machine Learning from beginner to advanced level.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Creative Projects</h3>
+            <p>
+                Worked on chatbot ideas, portfolio systems, and interactive UI designs.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <p>
+        Connect with me through Instagram and Email
+    </p>
+
+    <div class="contact-icons">
+
+        <a href="https://www.instagram.com/redcap_hm09?igsh=cWUwNGZ2NWRpNnR0" target="_blank">
+           <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="mailto:harshiitmishra0902@gmail.com">
+           <i class="fas fa-envelope"></i>
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Harshit Mishra | Designed By team ZERO9 [ FOUNDER :- HARSHIT MISHRA ]
+</footer>
+
+</body>
+</html>
