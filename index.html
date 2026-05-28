@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Harshit Mishra | Portfolio</title>
 
+    <!-- Google Fonts Import for Full Visibility -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
     <style>
-        /* --- ORIGINAL BASE STYLES --- */
+        /* --- BASE STYLES --- */
         *{
             margin:0;
             padding:0;
@@ -18,22 +26,25 @@
         }
 
         body{
-            font-family:'Poppins',sans-serif;
-            background:#02040a;
-            color:white;
-            overflow-x:hidden;
-            padding-top: 80px; /* Space for the fixed navbar */
+            font-family: 'Poppins', sans-serif;
+            background: #03050d;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed navbar */
+            position: relative;
         }
 
-        /* Masterpiece Background Animation - Liquid Copper & Cosmic Violet */
+        /* Ambient Cosmic Background Gradients */
         body::before{
             content:'';
             position:fixed;
+            top: 0;
+            left: 0;
             width:100%;
             height:100%;
             background:
-            radial-gradient(circle at top left, rgba(255, 123, 0, 0.15), transparent 35%),
-            radial-gradient(circle at bottom right, rgba(138, 43, 226, 0.15), transparent 35%);
+            radial-gradient(circle at 15% 20%, rgba(255, 123, 0, 0.18), transparent 40%),
+            radial-gradient(circle at 85% 80%, rgba(138, 43, 226, 0.18), transparent 40%);
             z-index:-1;
         }
 
@@ -44,16 +55,15 @@
             left: 0;
             width: 100%;
             height: 80px;
-            background-color: #05070f;
+            background-color: #060914;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 10%;
             z-index: 2000;
-            border-bottom: 1px solid rgba(255, 123, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 123, 0, 0.15);
         }
 
-        /* Left Side Brand Logo Style */
         .nav-logo {
             font-family: 'Poppins', sans-serif;
             font-size: 24px;
@@ -67,7 +77,6 @@
             color: #ff7b00;
         }
 
-        /* Right Side Nav Links */
         .nav-links {
             display: flex;
             gap: 35px;
@@ -91,7 +100,7 @@
             color: #ff7b00;
         }
 
-        /* HEADER WITH SIDE-BY-SIDE LAYOUT */
+        /* --- HEADER LAYOUT --- */
         header{
             min-height: calc(100vh - 80px);
             display:flex;
@@ -102,7 +111,6 @@
             position:relative;
         }
 
-        /* Profile Picture Styling */
         .profile-container {
             flex: 1;
             display: flex;
@@ -123,7 +131,6 @@
             animation: fadeIn 1.5s ease;
         }
 
-        /* Header Text Content Wrapper */
         .header-content {
             flex: 1.5;
             display: flex;
@@ -132,19 +139,19 @@
             text-align: left;
         }
 
-        /* Animated Letters */
+        /* Animated Title Name */
         .name{
             display:flex;
             font-size:70px;
-            font-family:'Orbitron',sans-serif;
-            font-weight:bold;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
             color:#ff7b00;
-            text-shadow: 0 0 20px rgba(255, 123, 0, 0.2);
+            text-shadow: 0 0 20px rgba(255, 123, 0, 0.3);
         }
 
         .name span{
             opacity:0;
-            transform:translateY(-100px);
+            transform:translateY(-50px);
             animation:drop 0.7s forwards;
         }
 
@@ -169,22 +176,22 @@
             letter-spacing:8px;
             color:#8a2be2;
             animation:glow 2s infinite alternate;
-            font-family:'Orbitron',sans-serif;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
         }
 
         @keyframes glow{
-            from{ text-shadow:0 0 10px rgba(138, 43, 226, 0.8); }
-            to{ text-shadow:0 0 30px rgba(138, 43, 226, 1); }
+            from{ text-shadow:0 0 15px rgba(138, 43, 226, 0.8); }
+            to{ text-shadow:0 0 35px rgba(138, 43, 226, 1); }
         }
 
-        /* Description */
         .intro{
             margin-top:30px;
             width:100%;
             max-width:800px;
             font-size:20px;
             line-height:1.8;
-            color:#ddd;
+            color: #e2e8f0;
             animation:fadeIn 2s ease;
         }
 
@@ -193,7 +200,7 @@
             to{ opacity:1; }
         }
 
-        /* Button Styling */
+        /* Action Buttons */
         .portfolio-buttons {
             margin-top: 25px;
             display: flex;
@@ -223,7 +230,7 @@
         }
         .btn-contact:hover {
             background: #ff7b00;
-            color: #02040a;
+            color: #03050d;
             box-shadow: 0 0 15px rgba(255, 123, 0, 0.6);
         }
 
@@ -234,7 +241,7 @@
         }
         .btn-review:hover {
             background: #8a2be2;
-            color: #02040a;
+            color: #03050d;
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
         }
 
@@ -245,11 +252,11 @@
         }
         .btn-about:hover {
             background: #ffffff;
-            color: #02040a;
+            color: #03050d;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
 
-        /* --- CENTERING MODAL POPUP STYLING --- */
+        /* --- MODAL POPUP STYLING --- */
         .modal {
             display: none; 
             position: fixed; 
@@ -258,16 +265,446 @@
             top: 0;
             width: 100%; 
             height: 100%; 
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
             backdrop-filter: blur(8px);
         }
 
         .modal-content {
-            background-color: #0b0e17;
+            background-color: #0c0f1d;
             color: #ffffff;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 30px;
-            border: 1px solid
+            border: 1px solid rgba(255, 123, 0, 0.3);
+            width: 85%;
+            max-width: 500px;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 0 35px rgba(255, 123, 0, 0.25);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .close-btn {
+            color: #cbd5e1;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-btn:hover {
+            color: #8a2be2;
+        }
+
+        .modal-content h3 {
+            color: #ff7b00;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .modal-content p {
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .modal-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .modal-list li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .modal-list li strong {
+            color: #8a2be2;
+        }
+
+        .review-select {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            background: #03050d;
+            color: #fff;
+            border: 1px solid rgba(255, 123, 0, 0.3);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .submit-btn {
+            background: #ff7b00;
+            color: #03050d;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+        .submit-btn:hover {
+            box-shadow: 0 0 15px rgba(255, 123, 0, 0.6);
+        }
+
+        /* --- SECTIONS --- */
+        section{
+            padding:80px 10%;
+        }
+
+        .section-title{
+            font-size:40px;
+            color:#ff7b00;
+            margin-bottom:40px;
+            text-align:center;
+            text-transform:uppercase;
+            letter-spacing:3px;
+            text-shadow: 0 0 15px rgba(255, 123, 0, 0.2);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* --- CARD ARCHITECTURE --- */
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+            perspective: 1000px;
+        }
+
+        .card{
+            background: #0c0f1d;
+            padding:30px;
+            border-radius:20px;
+            border:1px solid rgba(255, 123, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            
+            opacity: 0;
+            animation: assembleIn 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards, floatCards 5s ease-in-out infinite;
+            animation-delay: 0.5s, 1.9s;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s, 1.5s; }
+        .card:nth-child(2) { animation-delay: 0.2s, 1.6s; }
+        .card:nth-child(3) { animation-delay: 0.3s, 1.7s; }
+        .card:nth-child(4) { animation-delay: 0.4s, 1.8s; }
+        .card:nth-child(5) { animation-delay: 0.5s, 1.9s; }
+        .card:nth-child(6) { animation-delay: 0.6s, 2.0s; }
+
+        @keyframes assembleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translate3d(0, 100px, -200px);
+                filter: blur(10px);
+            }
+            40% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translate3d(0, 0, 0);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes floatCards {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .card:hover{
+            transform: translateY(-18px) scale(1.04) !important;
+            box-shadow: 0 0 25px rgba(255, 123, 0, 0.4);
+            border-color: #ff7b00;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card h3{
+            margin-bottom:15px;
+            color:#8a2be2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact{
+            text-align:center;
+        }
+
+        .contact p {
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .contact-icons{
+            margin-top:30px;
+            display:flex;
+            justify-content:center;
+            gap:40px;
+        }
+
+        .contact-icons a{
+            text-decoration:none;
+            color:#ffffff;
+            font-size:50px;
+            transition:0.4s;
+        }
+
+        .contact-icons a:hover{
+            transform:scale(1.2);
+            color:#ff7b00;
+            text-shadow: 0 0 15px rgba(255, 123, 0, 0.5);
+        }
+
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:25px;
+            background:#060914;
+            margin-top:50px;
+            color:#94a3b8;
+            border-top: 1px solid rgba(255, 123, 0, 0.1);
+            font-size: 14px;
+        }
+
+        /* Avatar Floating Effect */
+        .floating{
+            animation:float 4s ease-in-out infinite;
+        }
+
+        @keyframes float{
+            0%{ transform:translateY(0); }
+            50%{ transform:translateY(-15px); }
+            100%{ transform:translateY(0); }
+        }
+
+        /* RESPONSIVE RENDERING */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 5%;
+                height: 70px;
+            }
+            body {
+                padding-top: 70px;
+            }
+            .nav-logo {
+                font-size: 18px;
+            }
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links li a, .nav-links li button {
+                font-size: 12px;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding-top: 40px;
+            }
+            .header-content {
+                align-items: center;
+                text-align: center;
+            }
+            .name {
+                font-size: 45px;
+            }
+            .surname {
+                font-size: 32px;
+            }
+            .portfolio-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="javascript:void(0)" onclick="location.reload()" class="nav-logo">Harshit Portfo<span>lio.</span></a>
+    <ul class="nav-links">
+        <li><a href="javascript:void(0)" onclick="location.reload()">Home</a></li>
+        <li><button onclick="openAbout()">About</button></li>
+        <li><button onclick="openServices()">Services</button></li>
+        <li><button onclick="openSkills()">Skills</button></li> 
+        <li><a href="mailto:harshiitmishra0902@gmail.com">Contact</a></li>
+    </ul>
+</nav>
+
+<header>
+    <div class="profile-container floating">
+        <a href="https://imgbb.com/">
+            <img src="https://i.ibb.co/m5pZp7J3/harshit-jpg.jpg" alt="harshit" border="0" class="profile-pic">
+        </a>
+    </div>
+
+    <div class="header-content">
+        <div class="name">
+            <span>H</span><span>A</span><span>R</span><span>S</span><span>H</span><span>I</span><span>T</span>
+        </div>
+
+        <div class="surname">
+            MISHRA
+        </div>
+
+        <div class="intro">
+            Hello, my name is <b>Harshit Mishra</b>. 
+            Currently pursuing <b>BCA</b> at 
+            <b>Dr. C.V. Raman University</b>. 
+            I am passionate about technology, web development,
+            AI/ML, and creating futuristic projects with modern design.
+        </div>
+
+        <div class="portfolio-buttons">
+            <a href="mailto:harshiitmishra0902@gmail.com" class="btn btn-contact">Contact Us</a>
+            <button class="btn btn-review" onclick="openReview()">User Review</button>
+            <button class="btn btn-about" onclick="openAbout()">About Us</button>
+        </div>
+    </div>
+</header>
+
+<section>
+    <h2 class="section-title">My Achievements</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Web Development</h3>
+            <p>Created modern portfolio websites and responsive web projects using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="card">
+            <h3>AI / ML Learning</h3>
+            <p>Learning Artificial Intelligence and Machine Learning from beginner to advanced level.</p>
+        </div>
+        <div class="card">
+            <h3>Creative Projects</h3>
+            <p>Worked on chatbot ideas, portfolio systems, and interactive UI designs.</p>
+        </div>
+        
+        <div class="card">
+            <h3>C Programming</h3>
+            <p>Mastered core concepts, structural logic, data structures, and memory management using C.</p>
+        </div>
+        <div class="card">
+            <h3>Java Development</h3>
+            <p>Built object-oriented backend solutions, handling multi-threading, OOPs principles, and app architecture.</p>
+        </div>
+        <div class="card">
+            <h3>Python Programming</h3>
+            <p>Currently working on Python algorithms, scripting, automation, and preparing data for data science integration.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Connect with me through Instagram and Email</p>
+    <div class="contact-icons">
+        <a href="https://www.instagram.com/redcap_hm09?igsh=cWUwNGZ2NWRpNnR0" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:harshiitmishra0902@gmail.com">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Harshit Mishra | Designed By team ZERO9 [ FOUNDER :- HARSHIT MISHRA ]
+</footer>
+
+<div id="customModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("customModal");
+    const modalBody = document.getElementById("modalBody");
+
+    function openReview() {
+        modalBody.innerHTML = `
+            <h3>Rate My Site</h3>
+            <p>How much do you like my portfolio?</p>
+            <select id="ratingScore" class="review-select">
+                ${Array.from({length: 10}, (_, i) => `<option value="${i+1}">${i+1} / 10</option>`).join('')}
+            </select>
+            <button class="submit-btn" onclick="submitRating()">Submit Rating</button>
+        `;
+        modal.style.display = "block";
+    }
+
+    function submitRating() {
+        const score = document.getElementById("ratingScore").value;
+        alert(`Thank you for rating my site a ${score}/10!`);
+        closeModal();
+    }
+
+    function openAbout() {
+        modalBody.innerHTML = `
+            <h3>About Me</h3>
+            <p>Hello! My name is Harshit Mishra from Uttar Pradesh. I love technology and understanding the backend code that powers it. I am highly interested in AI/ML and am currently expanding my skills in it alongside solid core experience with C, Java, and Python. Feel free to contact me for collaboration!</p>
+        `;
+        modal.style.display = "block";
+    }
+
+    function openServices() {
+        modalBody.innerHTML = `
+            <h3>My Services</h3>
+            <ul class="modal-list">
+                <li><strong>1.</strong> Core Programming in C</li>
+                <li><strong>2.</strong> Enterprise Java Architecture</li>
+                <li><strong>3.</strong> Modern Portfolio Development</li>
+                <li><strong>4.</strong> Upcoming AI/ML Integration Services</li>
+            </ul>
+        `;
+        modal.style.display = "block";
+    }
+
+    function openSkills() {
+        modalBody.innerHTML = `
+            <h3>My Expertise</h3>
+            <ul class="modal-list">
+                <li><i class="fas fa-code" style="color:#ff7b00; margin-right:10px;"></i> Web Development</li>
+                <li><i class="fas fa-brain" style="color:#8a2be2; margin-right:10px;"></i> AI / ML Learning</li>
+                <li><i class="fas fa-cubes" style="color:#00ff55; margin-right:10px;"></i> C & Java Systems</li>
+                <li><i class="fab fa-python" style="color:#ffff00; margin-right:10px;"></i> Python Development</li>
+            </ul>
+        `;
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
