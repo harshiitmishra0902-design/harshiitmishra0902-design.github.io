@@ -13,11 +13,16 @@
             box-sizing:border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body{
             font-family:'Poppins',sans-serif;
             background:#050816;
             color:white;
             overflow-x:hidden;
+            padding-top: 80px; /* Space for the fixed navbar */
         }
 
         /* Background Animation */
@@ -32,9 +37,63 @@
             z-index:-1;
         }
 
+        /* --- FIXED NAVIGATION BAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #000000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Left Side Brand Logo Style */
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: #ff0055;
+        }
+
+        /* Right Side Nav Links */
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a, .nav-links li button {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li button:hover {
+            color: #ff0055;
+        }
+
         /* HEADER WITH SIDE-BY-SIDE LAYOUT */
         header{
-            min-height:100vh;
+            min-height: calc(100vh - 80px);
             display:flex;
             justify-content:center;
             align-items:center;
@@ -56,11 +115,11 @@
             width: 100%;
             max-width: 300px;
             height: auto;
-            border-radius: 50%; /* Makes the image circular */
+            border-radius: 50%;
             border: 3px solid #00f7ff;
             box-shadow: 0 0 25px rgba(0, 247, 255, 0.6);
             object-fit: cover;
-            aspect-ratio: 1 / 1; /* Keeps it a perfect circle */
+            aspect-ratio: 1 / 1;
             animation: fadeIn 1.5s ease;
         }
 
@@ -69,7 +128,7 @@
             flex: 1.5;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Aligns text to the left side */
+            align-items: flex-start;
             text-align: left;
         }
 
@@ -114,12 +173,8 @@
         }
 
         @keyframes glow{
-            from{
-                text-shadow:0 0 10px #ff00ff;
-            }
-            to{
-                text-shadow:0 0 30px #ff00ff;
-            }
+            from{ text-shadow:0 0 10px #ff00ff; }
+            to{ text-shadow:0 0 30px #ff00ff; }
         }
 
         /* Description */
@@ -134,15 +189,11 @@
         }
 
         @keyframes fadeIn{
-            from{
-                opacity:0;
-            }
-            to{
-                opacity:1;
-            }
+            from{ opacity:0; }
+            to{ opacity:1; }
         }
 
-        /* --- ADDED BUTTON STYLING (Matching your futuristic aesthetic) --- */
+        /* Button Styling */
         .portfolio-buttons {
             margin-top: 25px;
             display: flex;
@@ -165,7 +216,6 @@
             background: transparent;
         }
 
-        /* Contact Us Button - Cyan Glow */
         .btn-contact {
             color: #00f3ff;
             border: 2px solid #00f3ff;
@@ -177,7 +227,6 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
         }
 
-        /* User Review Button - Purple/Magenta Glow */
         .btn-review {
             color: #ff00ff;
             border: 2px solid #ff00ff;
@@ -186,10 +235,9 @@
         .btn-review:hover {
             background: #ff00ff;
             color: #050816;
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
 
-        /* About Us Button - Silver/White Glow */
         .btn-about {
             color: #ffffff;
             border: 2px solid #ffffff;
@@ -201,11 +249,11 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
 
-        /* --- ADDED MODAL POPUP STYLING --- */
+        /* --- CENTERING MODAL POPUP STYLING --- */
         .modal {
             display: none; 
             position: fixed; 
-            z-index: 1000; 
+            z-index: 3000; 
             left: 0;
             top: 0;
             width: 100%; 
@@ -217,15 +265,23 @@
         .modal-content {
             background-color: #10182f;
             color: #ffffff;
-            margin: 15% auto; 
-            padding: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px;
             border: 1px solid #00f7ff44;
-            width: 80%;
-            max-width: 450px;
+            width: 85%;
+            max-width: 500px;
             border-radius: 15px;
             font-family: 'Poppins', sans-serif;
-            position: relative;
-            box-shadow: 0 0 25px rgba(0, 247, 255, 0.3);
+            box-shadow: 0 0 35px rgba(0, 247, 255, 0.4);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         .close-btn {
@@ -236,6 +292,7 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.2s;
         }
         .close-btn:hover {
             color: #ff00ff;
@@ -244,15 +301,34 @@
         .modal-content h3 {
             color: #00f7ff;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
 
         .modal-content p {
             line-height: 1.6;
             color: #ddd;
             margin-bottom: 15px;
+            font-size: 15px;
         }
 
-        /* Review Dropdown & Submit Styles */
+        .modal-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .modal-list li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        .modal-list li strong {
+            color: #ff00ff;
+        }
+
         .review-select {
             width: 100%;
             padding: 10px;
@@ -365,11 +441,23 @@
 
         /* RESPONSIVE LAYOUT FOR MOBILE DEVICES */
         @media (max-width: 768px) {
+            .navbar {
+                padding: 0 5%;
+            }
+            .nav-logo {
+                font-size: 20px;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-links li a, .nav-links li button {
+                font-size: 13px;
+            }
             header {
                 flex-direction: column;
                 text-align: center;
                 gap: 30px;
-                padding-top: 60px;
+                padding-top: 40px;
             }
             .header-content {
                 align-items: center;
@@ -392,6 +480,16 @@
 </head>
 
 <body>
+
+<nav class="navbar">
+    <a href="javascript:void(0)" onclick="location.reload()" class="nav-logo">Welcome to my portfo<span>lio.</span></a>
+    <ul class="nav-links">
+        <li><a href="javascript:void(0)" onclick="location.reload()">Home</a></li>
+        <li><button onclick="openAbout()">About</button></li>
+        <li><button onclick="openServices()">Services</button></li>
+        <li><button onclick="openSkills()">Skills</button></li> <li><a href="mailto:harshiitmishra0902@gmail.com">Contact</a></li>
+    </ul>
+</nav>
 
 <header>
     <div class="profile-container floating">
@@ -493,9 +591,34 @@
 
     function openAbout() {
         modalBody.innerHTML = `
-            <h3>About Us</h3>
-            <p>Hello, myself <strong>Harshit Mishra</strong>. Thanks for visiting my portfolio!</p>
-            <p>If you want to give any additional message to me, contact me through Instagram or Gmail.</p>
+            <h3>About Me</h3>
+            <p>hello my name is harshit mishra from uttarpradesh i love technology and behind the code which running this technology instrested in ai/ml and currently working on this knowning c language java and python intrested people can contact me</p>
+        `;
+        modal.style.display = "block";
+    }
+
+    function openServices() {
+        modalBody.innerHTML = `
+            <h3>My Services</h3>
+            <ul class="modal-list">
+                <li><strong>1.</strong> Programming in C</li>
+                <li><strong>2.</strong> Java Language</li>
+                <li><strong>3.</strong> Make Portfolio Like This</li>
+                <li><strong>4.</strong> In Future AI/ML Update</li>
+            </ul>
+        `;
+        modal.style.display = "block";
+    }
+
+    /* NEW SKILLS POPUP MODAL FUNCTION */
+    function openSkills() {
+        modalBody.innerHTML = `
+            <h3>My Expertise</h3>
+            <ul class="modal-list">
+                <li><i class="fas fa-code" style="color:#00f7ff; margin-right:10px;"></i> Web Development</li>
+                <li><i class="fas fa-brain" style="color:#ff00ff; margin-right:10px;"></i> AI / ML Learning</li>
+                <li><i class="fas fa-lightbulb" style="color:#ffff00; margin-right:10px;"></i> Creative Projects</li>
+            </ul>
         `;
         modal.style.display = "block";
     }
@@ -504,7 +627,6 @@
         modal.style.display = "none";
     }
 
-    // Close modal if user clicks outside of the active box
     window.onclick = function(event) {
         if (event.target == modal) {
             closeModal();
@@ -514,4 +636,3 @@
 
 </body>
 </html>
-
