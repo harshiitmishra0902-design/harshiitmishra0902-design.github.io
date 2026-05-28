@@ -498,6 +498,204 @@
             100%{ transform:translateY(0); }
         }
 
+        /* --- FLOATING ROBOTIC CHATBOT WIDGET --- */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 5000;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Animated Word-by-Word Floating Header Prompt above Bot Head */
+        .chat-speech-bubble {
+            background: #0c0f1d;
+            border: 1px solid #ff7b00;
+            color: #ffffff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            max-width: 240px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        .chat-speech-bubble.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Speech Bubble Arrow Indicator pointing down to Bot */
+        .chat-speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 24px;
+            width: 10px;
+            height: 10px;
+            background: #0c0f1d;
+            border-right: 1px solid #ff7b00;
+            border-bottom: 1px solid #ff7b00;
+            transform: rotate(45deg);
+        }
+
+        /* Premium Mechanical Robot Avatar Launcher Icon Button */
+        .chat-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff7b00, #8a2be2);
+            color: #ffffff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 123, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 35px rgba(138, 43, 226, 0.8);
+        }
+
+        .chat-container {
+            display: none;
+            width: 350px;
+            height: 450px;
+            background: #0c0f1d;
+            border: 2px solid rgba(255, 123, 0, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border-radius: 15px;
+            position: absolute;
+            bottom: 85px;
+            right: 0;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .chat-header {
+            background: #060914;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 123, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff7b00;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-header h4 span {
+            color: #8a2be2;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chat-close:hover {
+            color: #ff7b00;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .msg.bot {
+            background: rgba(138, 43, 226, 0.15);
+            color: #ffffff;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .msg.user {
+            background: rgba(255, 123, 0, 0.15);
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            border: 1px solid rgba(255, 123, 0, 0.3);
+        }
+
+        .chat-input-area {
+            padding: 12px;
+            background: #060914;
+            border-top: 1px solid rgba(255, 123, 0, 0.2);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #03050d;
+            border: 1px solid rgba(255, 123, 0, 0.3);
+            border-radius: 5px;
+            padding: 8px 12px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #ff7b00;
+        }
+
+        .chat-send-btn {
+            background: #ff7b00;
+            color: #03050d;
+            border: none;
+            border-radius: 5px;
+            padding: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .chat-send-btn:hover {
+            box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+        }
+
         /* RESPONSIVE RENDERING */
         @media (max-width: 768px) {
             .navbar {
@@ -534,6 +732,10 @@
             }
             .portfolio-buttons {
                 justify-content: center;
+            }
+            .chat-container {
+                width: 300px;
+                right: -10px;
             }
         }
     </style>
@@ -628,6 +830,25 @@
     </div>
 </section>
 
+<!-- Floating Mechanical Robot Chat Widget -->
+<div class="chat-widget">
+    <div class="chat-speech-bubble" id="speechBubble"></div>
+    <button class="chat-btn" onclick="toggleChat()"><i class="fas fa-robot"></i></button>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h4><i class="fas fa-robot"></i> team<span>zero9</span> AI</h4>
+            <button class="chat-close" onclick="toggleChat()">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">Hello! I am teamzero9 assistant. How can I help you today regarding Harshit's portfolio or technical expertise?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask teamzero9..." onkeydown="if(event.key === 'Enter') sendChatMessage()">
+            <button class="chat-send-btn" onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
 <footer>
     © 2026 Harshit Mishra | Designed By team ZERO9 [ FOUNDER :- HARSHIT MISHRA ]
 </footer>
@@ -639,9 +860,113 @@
     </div>
 </div>
 
+<!-- Import Google Gen AI SDK for Web -->
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+<script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    // Embedded Key Configuration Variable
+    const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+
+    const systemInstruction = `You are "teamzero9", an expert AI assistant built directly into the personal portfolio of Harshit Mishra. 
+    Your goal is to answer queries professionally, confidently, and brilliantly.
+    Here is the background truth about Harshit:
+    - He is pursuing his BCA at Dr. C.V. Raman University.
+    - He is from Uttar Pradesh.
+    - He is the founder of team ZERO9.
+    - He specializes in Core C programming, Enterprise Java development, responsive Web Design, and is actively building expertise in AI/ML engineering.
+    Keep answers concise, engaging, and in context with his tech stack.`;
+
+    window.sendChatMessage = async function() {
+        const inputEl = document.getElementById("chatInput");
+        const msgContainer = document.getElementById("chatMessages");
+        const userText = inputEl.value.trim();
+
+        if (!userText) return;
+
+        // Render User Message
+        const userMsgNode = document.createElement("div");
+        userMsgNode.className = "msg user";
+        userMsgNode.textContent = userText;
+        msgContainer.appendChild(userMsgNode);
+        inputEl.value = "";
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+
+        // Render Loading State
+        const loadingNode = document.createElement("div");
+        loadingNode.className = "msg bot";
+        loadingNode.textContent = "teamzero9 is thinking...";
+        msgContainer.appendChild(loadingNode);
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+
+        if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+            loadingNode.textContent = "Error: Please configure your Gemini API Key in the script tag to talk to teamzero9!";
+            return;
+        }
+
+        try {
+            const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+            const model = genAI.getGenerativeModel({ 
+                model: "gemini-1.5-flash",
+                systemInstruction: systemInstruction
+            });
+
+            const result = await model.generateContent(userText);
+            const responseText = await result.response.text();
+            
+            loadingNode.textContent = responseText;
+        } catch (error) {
+            console.error(error);
+            loadingNode.textContent = "Systems offline. Unable to reach teamzero9 core matrix right now.";
+        }
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+    }
+</script>
+
 <script>
     const modal = document.getElementById("customModal");
     const modalBody = document.getElementById("modalBody");
+
+    // Word-by-word animation engine for the robotic prompt
+    document.addEventListener("DOMContentLoaded", () => {
+        const text = "hii i am a chatbot created by teamzero9 how can i assist you";
+        const words = text.split(" ");
+        const bubble = document.getElementById("speechBubble");
+        
+        bubble.classList.add("active");
+        let currentWordIndex = 0;
+        let currentDisplay = "";
+
+        function printWord() {
+            if (currentWordIndex < words.length) {
+                currentDisplay += (currentWordIndex === 0 ? "" : " ") + words[currentWordIndex];
+                bubble.textContent = currentDisplay;
+                currentWordIndex++;
+                setTimeout(printWord, 300); // 300ms loading gap per word
+            }
+        }
+        setTimeout(printWord, 600); // Small visual entrance padding
+    });
+
+    function toggleChat() {
+        const container = document.getElementById("chatContainer");
+        const bubble = document.getElementById("speechBubble");
+        
+        if (container.style.display === "flex") {
+            container.style.display = "none";
+            bubble.style.display = "block"; // Show the bubble prompt when chat closes
+        } else {
+            container.style.display = "flex";
+            bubble.style.display = "none";  // Hide the bubble prompt when chat opens
+        }
+    }
 
     function openReview() {
         modalBody.innerHTML = `
