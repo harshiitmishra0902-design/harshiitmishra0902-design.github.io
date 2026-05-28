@@ -369,25 +369,65 @@
             letter-spacing:3px;
         }
 
-        /* Achievement Cards */
+        /* --- UPDATED CARDS CONFIGURATION --- */
         .cards{
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
             gap:30px;
+            perspective: 1000px; /* Gives realistic depth during transition */
         }
 
         .card{
             background:#10182f;
             padding:30px;
             border-radius:20px;
-            transition:0.4s;
             border:1px solid #00f7ff44;
             box-shadow:0 0 20px #000;
+            
+            /* Assembly Animation Base Configuration */
+            opacity: 0;
+            animation: assembleIn 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards, floatCards 5s ease-in-out infinite;
+            animation-delay: 0.5s, 1.9s; /* The float animation waits until the entrance animation finishes */
         }
 
+        /* Distribute staggered entry speeds for each card row */
+        .card:nth-child(1) { animation-delay: 0.1s, 1.5s; }
+        .card:nth-child(2) { animation-delay: 0.2s, 1.6s; }
+        .card:nth-child(3) { animation-delay: 0.3s, 1.7s; }
+        .card:nth-child(4) { animation-delay: 0.4s, 1.8s; }
+        .card:nth-child(5) { animation-delay: 0.5s, 1.9s; }
+        .card:nth-child(6) { animation-delay: 0.6s, 2.0s; }
+
+        /* Complex keyframe: Starts all elements clustered together at the same absolute point, then breaks out */
+        @keyframes assembleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translate3d(0, 100px, -200px);
+                filter: blur(10px);
+            }
+            40% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translate3d(0, 0, 0);
+                filter: blur(0px);
+            }
+        }
+
+        /* Fluid Continuous Floating Simulation */
+        @keyframes floatCards {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Hover effect overrides the active floating animation safely */
         .card:hover{
-            transform:translateY(-10px) scale(1.03);
-            box-shadow:0 0 25px #00f7ff;
+            transform: translateY(-18px) scale(1.04) !important;
+            box-shadow: 0 0 25px #00f7ff;
+            border-color: #00f7ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .card h3{
@@ -428,7 +468,7 @@
             color:#aaa;
         }
 
-        /* Floating animation */
+        /* Floating animation for profile picture */
         .floating{
             animation:float 4s ease-in-out infinite;
         }
@@ -487,7 +527,8 @@
         <li><a href="javascript:void(0)" onclick="location.reload()">Home</a></li>
         <li><button onclick="openAbout()">About</button></li>
         <li><button onclick="openServices()">Services</button></li>
-        <li><button onclick="openSkills()">Skills</button></li> <li><a href="mailto:harshiitmishra0902@gmail.com">Contact</a></li>
+        <li><button onclick="openSkills()">Skills</button></li> 
+        <li><a href="mailto:harshiitmishra0902@gmail.com">Contact</a></li>
     </ul>
 </nav>
 
@@ -538,6 +579,19 @@
             <h3>Creative Projects</h3>
             <p>Worked on chatbot ideas, portfolio systems, and interactive UI designs.</p>
         </div>
+        
+        <div class="card">
+            <h3>C Programming</h3>
+            <p>Mastered core concepts, structural logic, data structures, and memory management using C.</p>
+        </div>
+        <div class="card">
+            <h3>Java Development</h3>
+            <p>Built object-oriented backend solutions, handling multi-threading, OOPs principles, and app architecture.</p>
+        </div>
+        <div class="card">
+            <h3>Python Programming</h3>
+            <p>Currently working on Python algorithms, scripting, automation, and preparing data for data science integration.</p>
+        </div>
     </div>
 </section>
 
@@ -558,14 +612,12 @@
     © 2026 Harshit Mishra | Designed By team ZERO9 [ FOUNDER :- HARSHIT MISHRA ]
 </footer>
 
-
 <div id="customModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <div id="modalBody"></div>
     </div>
 </div>
-
 
 <script>
     const modal = document.getElementById("customModal");
@@ -610,14 +662,14 @@
         modal.style.display = "block";
     }
 
-    /* NEW SKILLS POPUP MODAL FUNCTION */
     function openSkills() {
         modalBody.innerHTML = `
             <h3>My Expertise</h3>
             <ul class="modal-list">
                 <li><i class="fas fa-code" style="color:#00f7ff; margin-right:10px;"></i> Web Development</li>
                 <li><i class="fas fa-brain" style="color:#ff00ff; margin-right:10px;"></i> AI / ML Learning</li>
-                <li><i class="fas fa-lightbulb" style="color:#ffff00; margin-right:10px;"></i> Creative Projects</li>
+                <li><i class="fas fa-cubes" style="color:#00ff55; margin-right:10px;"></i> C & Java Systems</li>
+                <li><i class="fab fa-python" style="color:#ffff00; margin-right:10px;"></i> Python Development</li>
             </ul>
         `;
         modal.style.display = "block";
