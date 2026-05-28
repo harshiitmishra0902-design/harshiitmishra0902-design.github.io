@@ -869,11 +869,21 @@
   }
 </script>
 
+<!-- Teamzero9 Configuration Block -->
+<script>
+  const CONFIG = {
+    // 🛑 WARNING: Replace the placeholder string below with your new secret API key from Google AI Studio.
+    // Ensure you keep this file local and do not upload your script with a live key to GitHub or public hosts!
+    geminiApiKey: "AIzaSyBAvOUss3lGoUjVTCf_l3lUT2sOhRUhGug", 
+    // ... other teamzero9 settings
+  };
+</script>
+
 <script type="module">
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
-    // Embedded Key Configuration Variable
-    const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+    // Pulling the Embedded Key from our Configuration Object dynamically
+    const GEMINI_API_KEY = CONFIG.geminiApiKey;
 
     const systemInstruction = `You are "teamzero9", an expert AI assistant built directly into the personal portfolio of Harshit Mishra. 
     Your goal is to answer queries professionally, confidently, and brilliantly.
@@ -906,7 +916,7 @@
         msgContainer.appendChild(loadingNode);
         msgContainer.scrollTop = msgContainer.scrollHeight;
 
-        if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+        if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE" || GEMINI_API_KEY === "AIzaSyYourNewFreshSecretKeyGoesHere") {
             loadingNode.textContent = "Error: Please configure your Gemini API Key in the script tag to talk to teamzero9!";
             return;
         }
@@ -1033,3 +1043,4 @@
 
 </body>
 </html>
+       
